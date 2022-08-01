@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9chMmplzJsQPhEzmxVvoivqBE4OXp1AMyFZ5gziLaBAxVwL1RK+myWFqMHu88uamKodEGuN5vuLvPl2Vxw8tIw==",
+  "dgSpecHash": "qZNnFBzMHtAeG6tsDGeY5azDhhZr7AHA6/W+9UcoI7+Pr9T4tvPiIt6rh3sHuzoD/cQXZ+ba3UrQzX6Ywhe9Fw==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Instructor\\Desktop\\BankProject\\BankProject.csproj",
+  "projectFilePath": "C:\\Users\\Instructor\\Desktop\\BankProject\\BankProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Instructor\\.nuget\\packages\\amqpnetlite\\2.4.3\\amqpnetlite.2.4.3.nupkg.sha512",
     "C:\\Users\\Instructor\\.nuget\\packages\\amqpnetlite.core\\2.4.3\\amqpnetlite.core.2.4.3.nupkg.sha512",
