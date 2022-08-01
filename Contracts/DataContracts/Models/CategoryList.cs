@@ -10,7 +10,7 @@ namespace Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.Mo
   /// <summary>category list</summary>
 [Serializable]
 [DataContract(Name = "category-list", Namespace = "personal-finance-management")]
-public partial class CategoryList : Extendable
+public partial class CategoryList 
 {
     
     [DataMember(Name = "items", EmitDefaultValue = false)]

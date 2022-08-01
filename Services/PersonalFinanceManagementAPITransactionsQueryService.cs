@@ -30,7 +30,7 @@ namespace Asseco.Rest.PersonalFinanceManagementAPI.Services.EF.V1
 			_eventBus = eventBus;
 		}
 
-		public virtual  System.Threading.Tasks.Task<Result<TransactionPagedList>> TransactionsGetListAsync (InvocationContext invocationContext, TransactionsGetListHttpParams transactionsGetListHttpParams, Paging paging, Sorting sorting)
+		public virtual  System.Threading.Tasks.Task<Result<TransactionPagedList>> TransactionsGetListAsync ( TransactionsGetListHttpParams transactionsGetListHttpParams, Paging paging, Sorting sorting)
 		{
 					 
 		}

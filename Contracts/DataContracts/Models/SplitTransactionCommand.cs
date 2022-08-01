@@ -10,7 +10,7 @@ namespace Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.Mo
   /// <summary> </summary>
 [Serializable]
 [DataContract(Name = "split-transaction-command", Namespace = "personal-finance-management")]
-public partial class SplitTransactionCommand : Extendable
+public partial class SplitTransactionCommand 
 {
     
     [DataMember(Name = "splits", EmitDefaultValue = false)]

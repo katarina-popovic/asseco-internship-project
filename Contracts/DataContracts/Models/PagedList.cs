@@ -10,7 +10,7 @@ namespace Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.Mo
   /// <summary>List with support for paging</summary>
 [Serializable]
 [DataContract(Name = "paged-list", Namespace = "personal-finance-management")]
-public partial class PagedList : Extendable
+public partial class PagedList 
 {
     
     [DataMember(Name = "total-count", EmitDefaultValue = false)]

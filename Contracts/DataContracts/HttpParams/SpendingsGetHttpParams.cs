@@ -15,7 +15,7 @@ namespace Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.Ht
   {
     [DataMember(Name = "catcode", EmitDefaultValue = false)]
     [FromQuery]
-    public string Catcode { get; set; }
+    public string? Catcode { get; set; }
 
     [DataMember(Name = "start-date", EmitDefaultValue = false)]
     [FromQuery]
@@ -28,7 +28,7 @@ namespace Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.Ht
     [DataMember(Name = "direction", EmitDefaultValue = false)]
     [AllowedValues("d,c")]
     [FromQuery]
-    public string Direction { get; set; }
+    public string? Direction { get; set; }
 
   }
 }

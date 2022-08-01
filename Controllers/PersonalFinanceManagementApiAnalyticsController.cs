@@ -1,4 +1,4 @@
-/*using Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.Models;
+using Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.Models;
 using Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.HttpParams;
 using Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.ServiceContracts;
 using Asseco.Contracts;
@@ -18,8 +18,7 @@ using ValidationProblem = Asseco.Contracts.Errors.ValidationError;
 namespace Asseco.Rest.PersonalFinanceManagementAPI.Controller.V1
 {
 	[ValidateModel]
-	[Authorize]
-	public partial class PersonalFinanceManagementAPIAnalyticsController : InvocationContextBaseController
+	public partial class PersonalFinanceManagementAPIAnalyticsController 
 	{
 		
 		private readonly IPersonalFinanceManagementAPIAnalyticsQueryService _personalFinanceManagementAPIAnalyticsQueryService; 
@@ -40,9 +39,8 @@ namespace Asseco.Rest.PersonalFinanceManagementAPI.Controller.V1
 		public async System.Threading.Tasks.Task<IActionResult> SpendingsGet ([ModelBinder(typeof(HttpParametersModelBinder))] SpendingsGetHttpParams spendingsGetHttpParams
 		) 
 		{
-			var currentInvocationContext = CurrentInvocationContext;
-			return await _personalFinanceManagementAPIAnalyticsQueryService.SpendingsGetAsync(currentInvocationContext, spendingsGetHttpParams);
+			return await _personalFinanceManagementAPIAnalyticsQueryService.SpendingsGetAsync(spendingsGetHttpParams);
 		}
 
 	}
-}*/
+}

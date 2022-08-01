@@ -19,17 +19,16 @@ namespace Asseco.Rest.PersonalFinanceManagementAPI.Controller.V1
 {
 	[ValidateModel]
 	public partial class PersonalFinanceManagementAPITransactionsController : ControllerBase
-	//InvocationContextBaseController
 	{
 		
 		private readonly IPersonalFinanceManagementAPITransactionsQueryService _personalFinanceManagementAPITransactionsQueryService; 
 
-		//private readonly IPersonalFinanceManagementAPITransactionsCommandService _personalFinanceManagementAPITransactionsCommandService; 
+		private readonly IPersonalFinanceManagementAPITransactionsCommandService _personalFinanceManagementAPITransactionsCommandService; 
 
-		public PersonalFinanceManagementAPITransactionsController(IPersonalFinanceManagementAPITransactionsQueryService personalFinanceManagementAPITransactionsQueryService)
+		public PersonalFinanceManagementAPITransactionsController(IPersonalFinanceManagementAPITransactionsQueryService personalFinanceManagementAPITransactionsQueryService, IPersonalFinanceManagementAPITransactionsCommandService personalFinanceManagementAPITransactionsCommandService)
 		{
 					_personalFinanceManagementAPITransactionsQueryService = personalFinanceManagementAPITransactionsQueryService;
-					//_personalFinanceManagementAPITransactionsCommandService = personalFinanceManagementAPITransactionsCommandService;
+					_personalFinanceManagementAPITransactionsCommandService = personalFinanceManagementAPITransactionsCommandService;
 		}
 
 	  
@@ -38,62 +37,34 @@ namespace Asseco.Rest.PersonalFinanceManagementAPI.Controller.V1
 		[Consumes("application/json")]
 		[ProducesResponseType(typeof(TransactionPagedList), 200)]
 		[ProducesResponseType(typeof(ValidationProblem), 400)]
-		public async System.Threading.Tasks.Task<IActionResult> TransactionsGetList ([ModelBinder(typeof(HttpParametersModelBinder))] TransactionsGetListHttpParams transactionsGetListHttpParams, [FromQuery] Paging paging, [FromQuery] Sorting sorting
-		) 
+		public async System.Threading.Tasks.Task<IActionResult> TransactionsGetList ([ModelBinder(typeof(HttpParametersModelBinder))] TransactionsGetListHttpParams transactionsGetListHttpParams, [FromQuery] Paging paging, [FromQuery] Sorting sorting) 
 		{
-			return await _personalFinanceManagementAPITransactionsQueryService.TransactionsGetListAsync( transactionsGetListHttpParams, paging, sorting );
+			return await _personalFinanceManagementAPITransactionsQueryService.TransactionsGetListAsync(transactionsGetListHttpParams, paging, sorting);
+			
 		}
 
-	  
-		/*[HttpPost]
+		[HttpPost]
 		[Route("/transactions/import", Name = "Transactions_Import")]
-		[Consumes("application/csv")]
+		//[Consumes("application/csv")]
 		[ProducesResponseType(typeof(IActionResult), 200)]
 		[ProducesResponseType(typeof(BusinessProblem), 440)]
 		[ProducesResponseType(typeof(ValidationProblem), 400)]
 		public async System.Threading.Tasks.Task<IActionResult> TransactionsImport ([ModelBinder(typeof(HttpParametersModelBinder))] TransactionsImportHttpParams transactionsImportHttpParams,
-		 [FromBody] Transaction transaction) 
+		 [FromForm] IFormFile file) 
 		{
-			return await _personalFinanceManagementAPITransactionsCommandService.TransactionsImportAsync( transactionsImportHttpParams, transaction);
+			return await _personalFinanceManagementAPITransactionsCommandService.TransactionsImportAsync( transactionsImportHttpParams, file);
 		}
 
-	  
 		[HttpPost]
 		[Route("/transaction/{id}/split", Name = "Transactions_Split")]
 		[Consumes("application/json")]
 		[ProducesResponseType(typeof(IActionResult), 200)]
 		[ProducesResponseType(typeof(BusinessProblem), 440)]
 		[ProducesResponseType(typeof(ValidationProblem), 400)]
-		public async System.Threading.Tasks.Task<IActionResult> TransactionsSplit ([ModelBinder(typeof(HttpParametersModelBinder))] TransactionsSplitHttpParams transactionsSplitHttpParams,
-		 [FromBody] SplitTransactionCommand splitTransactionCommand) 
+		public async System.Threading.Tasks.Task<IActionResult> TransactionsSplit([ModelBinder(typeof(HttpParametersModelBinder))] TransactionsSplitHttpParams transactionsSplitHttpParams,
+		 [FromBody] SplitTransactionCommand splitTransactionCommand)
 		{
-			return await _personalFinanceManagementAPITransactionsCommandService.TransactionsSplitAsync( transactionsSplitHttpParams, splitTransactionCommand);
+			return await _personalFinanceManagementAPITransactionsCommandService.TransactionsSplitAsync(transactionsSplitHttpParams, splitTransactionCommand);
 		}
-
-	  
-		[HttpPost]
-		[Route("/transaction/{id}/categorize", Name = "Transactions_Categorize")]
-		[Consumes("application/json")]
-		[ProducesResponseType(typeof(IActionResult), 200)]
-		[ProducesResponseType(typeof(BusinessProblem), 440)]
-		[ProducesResponseType(typeof(ValidationProblem), 400)]
-		public async System.Threading.Tasks.Task<IActionResult> TransactionsCategorize ([ModelBinder(typeof(HttpParametersModelBinder))] TransactionsCategorizeHttpParams transactionsCategorizeHttpParams,
-		 [FromBody] TransactionCategorizeCommand transactionCategorizeCommand) 
-		{
-			return await _personalFinanceManagementAPITransactionsCommandService.TransactionsCategorizeAsync( transactionsCategorizeHttpParams, transactionCategorizeCommand);
-		}
-
-	  
-		[HttpPost]
-		[Route("/transaction/auto-categorize", Name = "Transactions_AutoCategorize")]
-		[Consumes("application/json")]
-		[ProducesResponseType(typeof(IActionResult), 200)]
-		[ProducesResponseType(typeof(ValidationProblem), 400)]
-		public async System.Threading.Tasks.Task<IActionResult> TransactionsAutoCategorize ([ModelBinder(typeof(HttpParametersModelBinder))] TransactionsAutoCategorizeHttpParams transactionsAutoCategorizeHttpParams
-		) 
-		{
-			return await _personalFinanceManagementAPITransactionsCommandService.TransactionsAutoCategorizeAsync( transactionsAutoCategorizeHttpParams);
-		}*/
-
 	}
 }

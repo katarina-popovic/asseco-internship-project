@@ -1,4 +1,4 @@
-/*using Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.Models;
+using Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.Models;
 using Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.HttpParams;
 using Asseco.Contracts;
 using Asseco.Contracts.Common;
@@ -17,6 +17,6 @@ namespace Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.ServiceContracts
 	[ServiceContract]
 	public interface IPersonalFinanceManagementAPIAnalyticsQueryService
 	{	
-	System.Threading.Tasks.Task<Result<SpendingsByCategory>> SpendingsGetAsync (InvocationContext invocationContext, SpendingsGetHttpParams spendingsGetHttpParams);
+	System.Threading.Tasks.Task<Result<SpendingsByCategory>> SpendingsGetAsync (SpendingsGetHttpParams spendingsGetHttpParams);
 	}
-}*/
+}

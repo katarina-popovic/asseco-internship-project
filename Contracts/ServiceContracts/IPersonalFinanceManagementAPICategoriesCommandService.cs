@@ -1,4 +1,4 @@
-/*using Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.Models;
+using Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.Models;
 using Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.HttpParams;
 using Asseco.Contracts;
 using Asseco.Contracts.Common;
@@ -15,6 +15,6 @@ namespace Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.ServiceContracts
 	[ServiceContract]
 	public interface IPersonalFinanceManagementAPICategoriesCommandService
 	{	
-		System.Threading.Tasks.Task<Result<IActionResult>> CategoryImprotAsync (InvocationContext invocationContext, CategoryImprotHttpParams categoryImprotHttpParams, CategoryCsv categoryCsv );
+		System.Threading.Tasks.Task<Result<IActionResult>> CategoryImportAsync (CategoryImprotHttpParams categoryImprotHttpParams, IFormFile file );
 	}
-}*/
+}

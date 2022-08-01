@@ -12,15 +12,16 @@ using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Asseco.REST.Contracts.Generics;
+using TransactionAPI.Command;
 
 namespace Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.ServiceContracts
 {
 
 	[ServiceContract]
 	public interface IPersonalFinanceManagementAPITransactionsQueryService
-	{	
-	System.Threading.Tasks.Task<Result<TransactionPagedList>> TransactionsGetListAsync (TransactionsGetListHttpParams transactionsGetListHttpParams,
-        Paging paging,
-        Sorting sorting);
+	{
+		System.Threading.Tasks.Task<Result<TransactionPagedList>> TransactionsGetListAsync(TransactionsGetListHttpParams transactionsGetListHttpParams, Paging paging, Sorting sorting);
+		Task<TransactionPagedList> CreateTransaction(CreateTransactionCommand command);
+		Task<Result<TransactionPagedList>> GetTransaction(string transactionId);
 	}
 }

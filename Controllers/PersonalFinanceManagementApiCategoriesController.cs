@@ -1,4 +1,4 @@
-/*using Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.Models;
+using Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.Models;
 using Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.HttpParams;
 using Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.ServiceContracts;
 using Asseco.Contracts;
@@ -18,46 +18,41 @@ using ValidationProblem = Asseco.Contracts.Errors.ValidationError;
 namespace Asseco.Rest.PersonalFinanceManagementAPI.Controller.V1
 {
 	[ValidateModel]
-	[Authorize]
 	public partial class PersonalFinanceManagementAPICategoriesController : InvocationContextBaseController
 	{
-		
-		private readonly IPersonalFinanceManagementAPICategoriesQueryService _personalFinanceManagementAPICategoriesQueryService; 
 
-		private readonly IPersonalFinanceManagementAPICategoriesCommandService _personalFinanceManagementAPICategoriesCommandService; 
+		private readonly IPersonalFinanceManagementAPICategoriesCommandService _personalFinanceManagementAPICategoriesCommandService;
+        private readonly IPersonalFinanceManagementAPICategoriesQueryService _personalFinanceManagementAPICategoriesQueryService;
 
-		public PersonalFinanceManagementAPICategoriesController(IPersonalFinanceManagementAPICategoriesQueryService personalFinanceManagementAPICategoriesQueryService, IPersonalFinanceManagementAPICategoriesCommandService personalFinanceManagementAPICategoriesCommandService)
+        public PersonalFinanceManagementAPICategoriesController( IPersonalFinanceManagementAPICategoriesCommandService personalFinanceManagementAPICategoriesCommandService, IPersonalFinanceManagementAPICategoriesQueryService personalFinanceManagementAPICategoriesQueryService)
 		{
-					_personalFinanceManagementAPICategoriesQueryService = personalFinanceManagementAPICategoriesQueryService;
 					_personalFinanceManagementAPICategoriesCommandService = personalFinanceManagementAPICategoriesCommandService;
+					_personalFinanceManagementAPICategoriesQueryService = personalFinanceManagementAPICategoriesQueryService;
 		}
 
 	  
 		[HttpPost]
-		[Route("/categories/import", Name = "Category_Improt")]
-		[Consumes("application/csv")]
+		[Route("/categories/import", Name = "Category_Import")]
+		//[Consumes("application/csv")]
 		[ProducesResponseType(typeof(IActionResult), 200)]
 		[ProducesResponseType(typeof(BusinessProblem), 440)]
 		[ProducesResponseType(typeof(ValidationProblem), 400)]
-		public async System.Threading.Tasks.Task<IActionResult> CategoryImprot ([ModelBinder(typeof(HttpParametersModelBinder))] CategoryImprotHttpParams categoryImprotHttpParams,
-		 [FromBody] CategoryCsv categoryCsv) 
+		public async System.Threading.Tasks.Task<IActionResult> CategoryImport ([ModelBinder(typeof(HttpParametersModelBinder))] CategoryImprotHttpParams categoryImprotHttpParams,
+		 [FromForm] IFormFile file) 
 		{
-			var currentInvocationContext = CurrentInvocationContext;
-			return await _personalFinanceManagementAPICategoriesCommandService.CategoryImprotAsync(currentInvocationContext, categoryImprotHttpParams, categoryCsv);
+			return await _personalFinanceManagementAPICategoriesCommandService.CategoryImportAsync( categoryImprotHttpParams, file);
 		}
 
-	  
-		[HttpGet]
-		[Route("/categories", Name = "Categories_GetList")]
-		[Consumes("application/json")]
-		[ProducesResponseType(typeof(CategoryList), 200)]
+		[HttpPost]
+		[Route("/transaction/{id}/categorize", Name = "Transactions_Categorize")]
+		//[Consumes("application/json")]
+		[ProducesResponseType(typeof(IActionResult), 200)]
+		[ProducesResponseType(typeof(BusinessProblem), 440)]
 		[ProducesResponseType(typeof(ValidationProblem), 400)]
-		public async System.Threading.Tasks.Task<IActionResult> CategoriesGetList ([ModelBinder(typeof(HttpParametersModelBinder))] CategoriesGetListHttpParams categoriesGetListHttpParams
-		) 
+		public async System.Threading.Tasks.Task<IActionResult> TransactionsCategorize([ModelBinder(typeof(HttpParametersModelBinder))] TransactionsCategorizeHttpParams transactionsCategorizeHttpParams,
+		 [FromBody] TransactionCategorizeCommand transactionCategorizeCommand)
 		{
-			var currentInvocationContext = CurrentInvocationContext;
-			return await _personalFinanceManagementAPICategoriesQueryService.CategoriesGetListAsync(currentInvocationContext, categoriesGetListHttpParams);
+			return await _personalFinanceManagementAPICategoriesQueryService.TransactionsCategorizeAsync(transactionsCategorizeHttpParams, transactionCategorizeCommand);
 		}
-
 	}
-}*/
+}

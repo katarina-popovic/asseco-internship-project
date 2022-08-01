@@ -1,10 +1,14 @@
 using System.Reflection;
 using Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.ServiceContracts;
+using Asseco.REST.Utilities.Serialization;
 using BankProject.Implementations.PersonalFinanceManagementApiTransactionQueryServiceMock;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure;
+using TransactionAPI.Database;
 using TransactionAPI.Database.Repositories;
+using TransactionAPI.Implementations;
+
 namespace BankProject;
 
 public class Program
@@ -14,13 +18,25 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
-
-        builder.Services.AddScoped<IPersonalFinanceManagementAPITransactionsQueryService, PersonalFinanceManagementAPITransactionsQueryServiceMock>();
+        builder.Services.AddMvcWithDynamicCaseResolvers();
+        builder.Services.AddScoped<IPersonalFinanceManagementAPITransactionsQueryService, PersonalFinanceManagementAPITransactionsQueryServiceEF>();
         builder.Services.AddScoped<ITransactionsRepository, TransactionsRepository>();
+        builder.Services.AddScoped<IPersonalFinanceManagementAPITransactionsCommandService, PersonalFinanceManagementAPITransactionsCommandServiceEF>();
+        builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+        builder.Services.AddScoped<IPersonalFinanceManagementAPICategoriesCommandService, PersonalFinanceManagementAPICategoriesCommandService>();
+        builder.Services.AddScoped<ICategorizedTransactionRepository, CategorizedTransactionRepository>();
+        builder.Services.AddScoped<IPersonalFinanceManagementAPICategoriesQueryService, PersonalFinanceManagementAPICategoriesQueryServiceEF>();
+        builder.Services.AddScoped<IPersonalFinanceManagementAPIAnalyticsQueryService, PersonalFinanceManagementAPIAnalyticsQueryServiceEF>();
         builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
-        builder.Services.AddDbContext<TransactionsDbContext>(options => {
+
+        builder.Services.AddDbContext<PfmDbContext>(options => {
             options.UseNpgsql(CreateConnectionString(builder.Configuration));
         });
+
+        /*builder.Services.AddDbContext<CategoryDbContext>(options => {
+            options.UseNpgsql(CreateConnectionString(builder.Configuration));
+        });*/
+
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
@@ -40,7 +56,7 @@ public class Program
         InitializeDatabase(app);
 
         app.MapControllers();
-
+        
         app.Run();
     }
 
@@ -49,7 +65,7 @@ public class Program
         if(app.Environment.IsDevelopment()){
             using var scope = app.Services.GetService<IServiceScopeFactory>().CreateScope();
 
-            scope.ServiceProvider.GetRequiredService<TransactionsDbContext>().Database.Migrate();
+            //scope.ServiceProvider.GetRequiredService<TransactionsDbContext>().Database.Migrate();
         }
     }
 

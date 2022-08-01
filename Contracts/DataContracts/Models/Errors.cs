@@ -9,7 +9,7 @@ namespace Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.Mo
 {
   [Serializable]
 [DataContract(Name = "errors", Namespace = "personal-finance-management")]
-public partial class Errors : Extendable
+public partial class Errors 
 {
     
     [DataMember(Name = "tag", EmitDefaultValue = false)]
