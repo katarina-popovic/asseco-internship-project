@@ -4,13 +4,15 @@ using TransactionAPI.Database.Entities;
 
 namespace TransactionAPI.Database.Repositories
 {
-    public class TransactionsDbContext : DbContext
+    public class PfmDbContext : DbContext
     {
         public DbSet<TransactionEntity> Transactions {get; set;}
-        public TransactionsDbContext()
+        public DbSet<CategoryEntity> Categories { get; set;}
+        public DbSet<SplitEntity> CategorizedTransactions {get; set;}
+        public PfmDbContext()
         {
         }
-        public TransactionsDbContext(DbContextOptions<TransactionsDbContext> options) : base(options)
+        public PfmDbContext(DbContextOptions<PfmDbContext> options) : base(options)
         {
         }
 

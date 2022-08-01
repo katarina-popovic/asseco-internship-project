@@ -70,6 +70,8 @@ C:\Users\Instructor\Desktop\BankProject\bin\Debug\net6.0\Asseco.Utilities.Enviro
 C:\Users\Instructor\Desktop\BankProject\bin\Debug\net6.0\Asseco.Utilities.Reflection.dll
 C:\Users\Instructor\Desktop\BankProject\bin\Debug\net6.0\Asseco.Utilities.Security.dll
 C:\Users\Instructor\Desktop\BankProject\bin\Debug\net6.0\Asseco.Utilities.Serialization.dll
+C:\Users\Instructor\Desktop\BankProject\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\Instructor\Desktop\BankProject\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Instructor\Desktop\BankProject\bin\Debug\net6.0\Azure.Core.dll
 C:\Users\Instructor\Desktop\BankProject\bin\Debug\net6.0\Azure.Identity.dll
 C:\Users\Instructor\Desktop\BankProject\bin\Debug\net6.0\Confluent.Kafka.dll
@@ -158,6 +160,7 @@ C:\Users\Instructor\Desktop\BankProject\bin\Debug\net6.0\System.Configuration.Co
 C:\Users\Instructor\Desktop\BankProject\bin\Debug\net6.0\System.Diagnostics.PerformanceCounter.dll
 C:\Users\Instructor\Desktop\BankProject\bin\Debug\net6.0\System.Drawing.Common.dll
 C:\Users\Instructor\Desktop\BankProject\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Instructor\Desktop\BankProject\bin\Debug\net6.0\System.Linq.Async.dll
 C:\Users\Instructor\Desktop\BankProject\bin\Debug\net6.0\System.Private.ServiceModel.dll
 C:\Users\Instructor\Desktop\BankProject\bin\Debug\net6.0\System.Runtime.Caching.dll
 C:\Users\Instructor\Desktop\BankProject\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll

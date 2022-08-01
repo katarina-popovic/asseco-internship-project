@@ -1,4 +1,4 @@
-/*using Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.Models;
+using Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.Models;
 using Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.HttpParams;
 using Asseco.Contracts;
 using Asseco.Contracts.Common;
@@ -16,7 +16,7 @@ namespace Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.ServiceContracts
 
 	[ServiceContract]
 	public interface IPersonalFinanceManagementAPICategoriesQueryService
-	{	
-	System.Threading.Tasks.Task<Result<CategoryList>> CategoriesGetListAsync (InvocationContext invocationContext, CategoriesGetListHttpParams categoriesGetListHttpParams);
+	{
+		System.Threading.Tasks.Task<Result<IActionResult>> TransactionsCategorizeAsync(TransactionsCategorizeHttpParams transactionsCategorizeHttpParams, TransactionCategorizeCommand transactionCategorizeCommand);
 	}
-}*/
+}

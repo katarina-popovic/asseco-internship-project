@@ -10,7 +10,7 @@ namespace Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.Mo
   /// <summary>single-category-split</summary>
 [Serializable]
 [DataContract(Name = "single-category-split", Namespace = "personal-finance-management")]
-public partial class SingleCategorySplit : Extendable
+public partial class SingleCategorySplit 
 {
     
     [DataMember(Name = "catcode", EmitDefaultValue = false)]

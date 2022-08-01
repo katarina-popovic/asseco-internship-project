@@ -13,5 +13,7 @@ namespace TransactionAPI.Database.Entities
         public string Currency {get; set;}
         public MccCodeEnum Mcc {get; set;}
         public string Kind {get; set;}
+        public string CatCode {get; set;}
+        public virtual List<SplitEntity> SplitTransactionList { get; set; }
     }
 }

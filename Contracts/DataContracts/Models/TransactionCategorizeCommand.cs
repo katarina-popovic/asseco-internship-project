@@ -10,7 +10,7 @@ namespace Asseco.Rest.PersonalFinanceManagementAPI.Contracts.V1.DataContracts.Mo
   /// <summary> </summary>
 [Serializable]
 [DataContract(Name = "transaction-categorize-command", Namespace = "personal-finance-management")]
-public partial class TransactionCategorizeCommand : Extendable
+public partial class TransactionCategorizeCommand 
 {
     
     [DataMember(Name = "catcode", EmitDefaultValue = false)]
