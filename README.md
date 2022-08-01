@@ -1,1 +1,0 @@
-# asseco-internship-project
